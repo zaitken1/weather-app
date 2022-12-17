@@ -1,0 +1,123 @@
+/* VARIABLES */
+:root {
+    --white: #ffffff;
+    --pink: #E6317C;
+    --orange: #EC7D10;
+}
+
+/* RESETS */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Lato, serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* GLOBAL CLASSES */
+/* GLOBAL CLASSES */
+.row, .column {
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+header {
+    height: 60px;
+    /* background: linear-gradient(to left top, #E6317C, #EC7D10); */
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+h1, h2 {
+    font-weight: 300;
+    opacity: 1;
+    color: var(--white);
+}
+
+/* .top-section {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    background-color: #dfdcdc;
+} */
+
+.hero {
+    background: 
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(../images/sunset.jpg);
+    height: 500px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+.search {
+    height: 80%;
+}
+
+.search-h2 {
+    padding: 20px;
+    font-size: 2rem;
+}
+
+.search-icon {
+    color: var(--white);
+}
+
+.search-icon {
+    position: relative;
+    font-size: 1.3rem;
+    z-index: 1;
+    right: 125px;
+    top: 33px;
+    color: var(--white);
+    cursor: pointer;
+    width: 0;
+}
+
+input {
+    padding-left: 50px;
+    height: 2em;
+    width: 15em;
+    border-radius: 30px;
+    background-color: transparent;
+    color: var(--white);
+    border: 3px solid #fff;
+    height: 40px;
+    font-size: 1em;
+}
+
+.searchBtn {
+    margin-top: 20px;
+    border-radius: 20px;
+    height: 40px;
+    border: none;
+    background: linear-gradient(to left top, #E6317C, #EC7D10);
+    color: var(--white);
+    width: 150px;
+    font-size: 1.5rem;
+}
+
+.searchBtn:hover {
+    cursor: pointer;
+    background: linear-gradient(to left top,#EC7D10, #E6317C);
+}
