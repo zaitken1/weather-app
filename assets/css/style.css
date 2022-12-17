@@ -39,7 +39,6 @@ a {
 
 header {
     height: 60px;
-    /* background: linear-gradient(to left top, #E6317C, #EC7D10); */
     color: var(--white);
     display: flex;
     justify-content: center;
@@ -47,18 +46,10 @@ header {
     opacity: 1;
 }
 
-h1, h2 {
+h1 {
     font-weight: 300;
-    opacity: 1;
     color: var(--white);
 }
-
-/* .top-section {
-    display: flex;
-    flex-direction: row;
-    padding: 20px;
-    background-color: #dfdcdc;
-} */
 
 .hero {
     background: 
@@ -75,8 +66,9 @@ h1, h2 {
 }
 
 .search-h2 {
-    padding: 20px;
     font-size: 2rem;
+    font-weight: 100;
+    color: var(--white);
 }
 
 .search-icon {
