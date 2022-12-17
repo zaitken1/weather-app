@@ -3,6 +3,8 @@
     --white: #ffffff;
     --pink: #E6317C;
     --orange: #EC7D10;
+    --dark-blue: #11212a;
+    --dark-grey: #3C3C3C;
 }
 
 /* RESETS */
@@ -11,8 +13,9 @@
     padding: 0;
 }
 
-body {
+html, body {
     font-family: Lato, serif;
+    height: 100%;
 }
 
 a {
@@ -112,4 +115,20 @@ input {
 .searchBtn:hover {
     cursor: pointer;
     background: linear-gradient(to left top,#EC7D10, #E6317C);
+}
+
+.current-weather {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    height: 200px;
+}
+
+.current-h2 {
+    font-weight: 100;
+}
+
+footer {
+    height: 50px;
+    background-color: var(--orange);
+    color: var(--white)
 }
