@@ -23,7 +23,6 @@ a {
 }
 
 /* GLOBAL CLASSES */
-/* GLOBAL CLASSES */
 .row, .column {
     display: flex;
 }
@@ -117,10 +116,6 @@ input {
     background: linear-gradient(to left top,#EC7D10, #E6317C);
 }
 
-.container {
-    display: flex;
-}
-
 .current-weather {
     background-color: var(--dark-blue);
     color: var(--white);
@@ -149,8 +144,17 @@ input {
     padding: 10px 0;
 }
 
+.forecast {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 200px 200px;
+}
+
 footer {
     height: 50px;
-    background-color: var(--orange);
+    background-color: var(--dark-blue);
     color: var(--white)
 }
