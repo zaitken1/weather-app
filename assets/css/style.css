@@ -117,14 +117,22 @@ input {
     background: linear-gradient(to left top,#EC7D10, #E6317C);
 }
 
+.container {
+    display: flex;
+}
+
 .current-weather {
     background-color: var(--dark-blue);
     color: var(--white);
     height: 200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr !important;
+    width: 100%;
 }
 
 .current-h2 {
     font-weight: 100;
+    font-size: 60px;
 }
 
 footer {
