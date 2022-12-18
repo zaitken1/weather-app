@@ -4,7 +4,6 @@ var currentDateEl = $('.current-date');
 
 //Add current date
 var currentDay = moment().format('dddd Do MMMM YYYY');
-currentDateEl.text(currentDay);
 
 //GET HTML ELEMENTS
 var searchInput = $('.search-input');
@@ -19,16 +18,16 @@ function displayMatches(matches) {
         <section class="row">
             <div class="current-weather align-center">
                 <div>
-                    <h2 class="current-city-h2 row justify-center align-center">London</h2>
-                    <p class="current-date row justify-center align-center"></p>
+                    <h2 class="current-city-h2 row justify-center align-center">${match.city}</h2>
+                    <p class="current-date row justify-center align-center">${currentDay}</p>
                 </div>
                 <div>
                     <div class="row">
                         <i class="current-weather-icon far fa-sun"></i>
                         <p class="current-temp">32 C</p>
                     </div>
-                    <p class="current-humidity">Humidity: 80%</p>
-                    <p class="current-wind">Wind Speed: 15mph</p>
+                    <p class="current-humidity">Humidity:${match.humidity}</p>
+                    <p class="current-wind">Wind: ${match.wind}</p>
                 </div>
             </div>
         </section >
