@@ -172,6 +172,25 @@ input {
 
 .future-date {
     font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.future-temp, .future-icon {
+    font-size: 25px;
+}
+
+.future-wind {
+    margin-bottom: 7px;
+}
+
+.future-humidity {
+    margin-top: 7px;
+}
+
+.card-content {
+    width: 100%;
+    display: flex;
+    justify-content:space-evenly;
 }
 
 footer {
