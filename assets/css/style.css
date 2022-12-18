@@ -117,6 +117,17 @@ input {
     background: linear-gradient(to left top,#EC7D10, #E6317C);
 }
 
+main {
+    height: 100%;
+    background: var(--dark-blue);
+}
+
+.para {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    padding-top: 50px;
+}
+
 .current-weather {
     background-color: var(--dark-blue);
     color: var(--white);

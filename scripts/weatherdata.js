@@ -1,5 +1,6 @@
 var weatherData = [
     {
+        city: 'London',
         date: '18/12/2022',
         icon: 'https://www.pngitem.com/pimgs/m/264-2645717_sunny-sun-icon-svg-hd-png-download.png',
         temperature: '32C',
@@ -7,6 +8,7 @@ var weatherData = [
         humidity: '80%'
     },
     {
+        city: 'New York',
         date: '19/12/2022',
         icon: 'https://www.pngitem.com/pimgs/m/264-2645717_sunny-sun-icon-svg-hd-png-download.png',
         temperature: '24C',
@@ -14,6 +16,7 @@ var weatherData = [
         humidity: '85%'
     },
     {
+        city: 'Paris',
         date: '20/12/2022',
         icon: 'https://www.pngitem.com/pimgs/m/264-2645717_sunny-sun-icon-svg-hd-png-download.png',
         temperature: '19C',
@@ -21,6 +24,7 @@ var weatherData = [
         humidity: '84%'
     },
     {
+        city: 'Berlin',
         date: '21/12/2022',
         icon: 'https://www.pngitem.com/pimgs/m/264-2645717_sunny-sun-icon-svg-hd-png-download.png',
         temperature: '20C',
@@ -28,6 +32,7 @@ var weatherData = [
         humidity: '89%'
     },
     {
+        city: 'Amsterdam',
         date: '22/12/2022',
         icon: 'https://www.pngitem.com/pimgs/m/264-2645717_sunny-sun-icon-svg-hd-png-download.png',
         temperature: '29C',
