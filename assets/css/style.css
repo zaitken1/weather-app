@@ -74,7 +74,7 @@ h1 {
     color: var(--white);
 }
 
-.search-icon {
+.search-icon, .current-weather-icon {
     color: var(--white);
 }
 
@@ -133,6 +133,20 @@ input {
 .current-city-h2 {
     font-weight: 100;
     font-size: 60px;
+}
+
+.current-weather-icon {
+    font-size: 30px;
+    padding: 10px 10px 10px 0;
+}
+
+.current-temp {
+    font-size: 30px;
+    padding: 10px 0 10px 10px;
+}
+
+.current-humidity, .current-wind {
+    padding: 10px 0;
 }
 
 footer {
