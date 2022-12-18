@@ -24,7 +24,7 @@ function displayMatches(matches) {
                 <div>
                     <div class="row">
                         <i class="current-weather-icon far fa-sun"></i>
-                        <p class="current-temp">32 C</p>
+                        <p class="current-temp">${match.temperature}</p>
                     </div>
                     <p class="current-humidity">Humidity:${match.humidity}</p>
                     <p class="current-wind">Wind: ${match.wind}</p>
