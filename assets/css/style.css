@@ -198,3 +198,17 @@ footer {
     background-color: var(--dark-blue);
     color: var(--white)
 }
+
+@media screen and (max-width: 755px) {
+    .forecast {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 200px 200px 200px;
+    }
+}
+
+@media screen and (max-width: 505px) {
+    .forecast {
+        grid-template-columns: 1fr;
+        grid-template-rows: 200px 200px 200px 200px 200px;
+    }
+}
