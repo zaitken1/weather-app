@@ -39,6 +39,7 @@ a {
     align-items: center;
 }
 
+/* CUSTOM STYLES */
 header {
     height: 60px;
     color: var(--white);
@@ -120,14 +121,18 @@ input {
     background-color: var(--dark-blue);
     color: var(--white);
     height: 250px;
-    display: grid;
-    grid-template-columns: 1fr 1fr !important;
+    display: flex;
+    justify-content: space-evenly;
     width: 100%;
 }
 
 .current-city-h2 {
     font-weight: 100;
     font-size: 60px;
+}
+
+.current-date {
+    margin-top: 10px;
 }
 
 .current-weather-icon {
@@ -144,6 +149,12 @@ input {
     padding: 10px 0;
 }
 
+.forecast-h2 {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    font-weight: 300;
+}
+
 .forecast {
     background-color: var(--dark-blue);
     color: var(--white);
@@ -154,9 +165,13 @@ input {
 }
 
 .weather-card {
-    background: linear-gradient(to left top, #11212a, #535E65, #11212a);
+    background: linear-gradient(to left top, #11212a, #535E65);
     border-radius: 10px;
     margin: 20px;
+}
+
+.future-date {
+    font-size: 1.2rem;
 }
 
 footer {
