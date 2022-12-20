@@ -112,11 +112,17 @@ function getWeatherData(event) {
     if (searchText) {
         var matches = [];
 
-        for (var weather of weatherData) {
-            if (weather.city.toLowerCase().includes(searchText)) {
-                matches.push(weather);
-            }
+        var responsePromise = fetch('https://api.openweathermap.org/geo/1.0/direct?q=London&limit=1&appid=cc0b5674499c26e188072975d36326e1');
+
+        function handleResponse(responseObj) {
+            return responseObj.json();
         }
+
+        responsePromise
+            .then(handleResponse)
+            .then(function(data){
+            });
+
         displayMatches(matches);
     }
 }
