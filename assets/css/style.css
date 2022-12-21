@@ -74,7 +74,7 @@ h1 {
     color: var(--white);
 }
 
-.search-icon, .current-weather-icon {
+.search-icon {
     color: var(--white);
 }
 
@@ -149,6 +149,7 @@ main {
 .current-weather-icon {
     font-size: 30px;
     padding: 10px 10px 10px 0;
+    width: 100%;
 }
 
 .current-temp {
@@ -158,6 +159,10 @@ main {
 
 .current-humidity, .current-wind {
     padding: 10px 0;
+}
+
+.forecast-section {
+    display: none;
 }
 
 .forecast-h2 {
