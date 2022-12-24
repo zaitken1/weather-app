@@ -114,9 +114,25 @@ input {
     font-size: 1.5rem;
 }
 
+.search-history {
+    border-radius: 20px;
+    height: 40px;
+    border: none;
+    color: var(--dark-blue);
+    width: 180px;
+    font-size: 1.5rem;
+    margin: 30px 10px 0 10px;
+}
+
 .searchBtn:hover {
     cursor: pointer;
     background: linear-gradient(to left top,#EC7D10, #E6317C);
+}
+
+.search-history:hover {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    cursor: pointer;
 }
 
 main {

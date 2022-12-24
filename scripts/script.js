@@ -1,24 +1,21 @@
-//ADD CURRENT DATE TO CURRENT WEATHER ELEMENT
+//Add current date to current weather element
 //Get p element for current day
 var currentDateEl = $('.current-date');
 
 //Add current date
 var currentDay = moment().format('dddd Do MMMM YYYY');
 
-//GET HTML ELEMENTS
+//Get HTML elements
 var searchInput = $('.search-input');
 var searchBtn = $('.searchBtn');
 var itemWrapper = $('main');
 var introPara = $('.introPara');
 var forecastSection = $('.forecast-section');
 var forecastEl = $('.forecast');
+var historyEl = $('.history');
 
-
-//OPENWEATHER API LINKS
-// https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key} - CURRENT WEATHER
-// https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key} - 5 DAY FORECAST
-
-//GLOBAL VARIABLES REQUIRED FOR OPENWEATHER API CALLS
+//OPENWEATHER API
+//Global variables required for Open Weather API
 var apiKey = 'cc0b5674499c26e188072975d36326e1';
 var baseURL = 'https://api.openweathermap.org/data/2.5/';
 var currentURL = baseURL + `weather?appid=${apiKey}&units=metric&`;
@@ -35,7 +32,12 @@ function getWeatherData(event) {
             $.get(currentURL + `q=${cityName}`)
                 .then(function (currentData) {
 
+                    historyEl.html(`
+                    <button class="search-history">London</button>
+                    `);
+
                     introPara.html('');
+                    forecastEl.html('');
 
                     introPara.html(`
                         <section class="row">
@@ -85,7 +87,6 @@ function getWeatherData(event) {
                                 }
                             }
                         });
-
                 });
 
 
@@ -93,18 +94,6 @@ function getWeatherData(event) {
     }
 
     inputSubmit(city);
-    //     var responsePromise = fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${searchText}&limit=1&appid=cc0b5674499c26e188072975d36326e1`);
-
-    //     function handleResponse(responseObj) {
-    //         return responseObj.json();
-    //     }
-
-    //     responsePromise
-    //         .then(handleResponse)
-    //         .then(function(data){
-    //             console.log(data);
-    //         });
-    // }
 
 }
 
@@ -113,13 +102,3 @@ function init() {
 }
 
 init();
-
-
-
-    //Grab HTML elements
-    //Get inputs value on search button click
-    //Grab data related to user's search
-    //Inject the weather items into the DOM based on user's search
-
-
-
