@@ -13,101 +13,6 @@ var introPara = $('.introPara');
 var forecastSection = $('.forecast-section');
 var forecastEl = $('.forecast');
 
-// function displayMatches() {
-//     itemWrapper.html('');
-
-//     // for (var match of matches) {
-//     itemWrapper.html(`
-//         <section class="row">
-//             <div class="current-weather align-center">
-//                 <div>
-//                     <h2 class="current-city-h2 row justify-center align-center">${currentData.name}</h2>
-//                     <p class="current-date row justify-center align-center">${currentDay}</p>
-//                 </div>
-//                 <div>
-//                     <div class="row">
-//                         <i class="current-weather-icon far fa-sun"></i>
-//                         <p class="current-temp">${Math.round(currentData.main.temp)}</p>
-//                     </div>
-//                     <p class="current-humidity">Humidity:${currentData.main.humidity}</p>
-//                     <p class="current-wind">Wind: ${currentData.wind.speed}</p>
-//                 </div>
-//             </div>
-//         </section >
-
-//         <h2 class="forecast-h2 row justify-center align-center">5-Day Forecast</h2>
-// <section class="row">
-//     <div class="forecast">
-//         <div class="weather-card column justify-center align-center">
-//             <p class="future-date">18/12/2022</p>
-//             <div class="card-content row">
-//                 <div class="column">
-//                     <i class="future-icon far fa-sun"></i>
-//                     <p class="future-temp">32 C</p>
-//                 </div>
-//                 <div class="column">
-//                     <p class="future-wind">Wind: 32mph</p>
-//                     <p class="future-humidity">Humidity: 80%</p>
-//                 </div>
-//             </div>
-//         </div>
-//                 <div class="weather-card column justify-center align-center">
-//                     <p class="future-date">18/12/2022</p>
-//                     <div class="card-content row">
-//                         <div class="column">
-//                             <i class="future-icon far fa-sun"></i>
-//                             <p class="future-temp">32 C</p>
-//                         </div>
-//                         <div class="column">
-//                             <p class="future-wind">Wind: 32mph</p>
-//                             <p class="future-humidity">Humidity: 80%</p>
-//                         </div>
-//                     </div>
-//                 </div>
-//                 <div class="weather-card column justify-center align-center">
-//                     <p class="future-date">18/12/2022</p>
-//                     <div class="card-content row">
-//                         <div class="column">
-//                             <i class="future-icon far fa-sun"></i>
-//                             <p class="future-temp">32 C</p>
-//                         </div>
-//                         <div class="column">
-//                             <p class="future-wind">Wind: 32mph</p>
-//                             <p class="future-humidity">Humidity: 80%</p>
-//                         </div>
-//                     </div>
-//                 </div>
-//                 <div class="weather-card column justify-center align-center">
-//                     <p class="future-date">18/12/2022</p>
-//                     <div class="card-content row">
-//                         <div class="column">
-//                             <i class="future-icon far fa-sun"></i>
-//                             <p class="future-temp">32 C</p>
-//                         </div>
-//                         <div class="column">
-//                             <p class="future-wind">Wind: 32mph</p>
-//                             <p class="future-humidity">Humidity: 80%</p>
-//                         </div>
-//                     </div>
-//                 </div>
-//                 <div class="weather-card column justify-center align-center">
-//                     <p class="future-date">18/12/2022</p>
-//                     <div class="card-content row">
-//                         <div class="column">
-//                             <i class="future-icon far fa-sun"></i>
-//                             <p class="future-temp">32 C</p>
-//                         </div>
-//                         <div class="column">
-//                             <p class="future-wind">Wind: 32mph</p>
-//                             <p class="future-humidity">Humidity: 80%</p>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </section>
-//         `)
-// }
-// }
 
 //OPENWEATHER API LINKS
 // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key} - CURRENT WEATHER
@@ -130,9 +35,9 @@ function getWeatherData(event) {
             $.get(currentURL + `q=${cityName}`)
                 .then(function (currentData) {
 
-                    itemWrapper.html('');
+                    introPara.html('');
 
-                    itemWrapper.html(`
+                    introPara.html(`
                         <section class="row">
                             <div class="current-weather align-center">
                                 <div>
@@ -154,20 +59,11 @@ function getWeatherData(event) {
                     $.get(forecastURL + `lat=${currentData.coord.lat}&lon=${currentData.coord.lon}`)
                         .then(function (forecastData) {
 
-                            
-
-
                             for (var forecastObj of forecastData.list) {
-                                console.log(forecastData);
-                                console.log(forecastObj.dt_txt);
-                                console.log(`${iconURL + forecastObj.weather[0].icon}.png`);
-                                console.log(Math.round(forecastObj.main.temp));
-                                console.log(forecastObj.main.humidity);
-                                console.log(forecastObj.wind.speed);
 
                                 forecastSection.show();
 
-                                forecastEl.html(`
+                                forecastEl.append(`
                                         <div class="weather-card column justify-center align-center">
                                             <p class="future-date">${forecastObj.dt_txt}</p>
                                             <div class="card-content row">
@@ -182,6 +78,13 @@ function getWeatherData(event) {
                                             </div>
                                         </div>
                                 `)
+
+                                console.log(forecastData);
+                                console.log(forecastObj.dt_txt);
+                                console.log(`${iconURL + forecastObj.weather[0].icon}.png`);
+                                console.log(Math.round(forecastObj.main.temp));
+                                console.log(forecastObj.main.humidity);
+                                console.log(forecastObj.wind.speed);
                             }
                         });
 
