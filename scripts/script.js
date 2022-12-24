@@ -25,6 +25,7 @@ var iconURL = 'https://openweathermap.org/img/w/';
 function getWeatherData(event) {
     event.preventDefault();
     var city = searchInput.val().trim().toLowerCase();
+    var cityUpperCase = searchInput.val().trim();
 
     if (city) {
         var matches = [];
@@ -33,7 +34,7 @@ function getWeatherData(event) {
                 .then(function (currentData) {
 
                     historyEl.html(`
-                    <button class="search-history">${city}</button>
+                    <button class="search-history">${cityUpperCase}</button>
                     `);
 
                     introPara.html('');
