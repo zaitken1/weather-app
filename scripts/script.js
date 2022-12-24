@@ -33,7 +33,7 @@ function getWeatherData(event) {
                 .then(function (currentData) {
 
                     historyEl.html(`
-                    <button class="search-history">London</button>
+                    <button class="search-history">${city}</button>
                     `);
 
                     introPara.html('');
