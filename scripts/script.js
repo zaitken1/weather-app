@@ -61,30 +61,28 @@ function getWeatherData(event) {
 
                             for (var forecastObj of forecastData.list) {
 
-                                forecastSection.show();
+                                var dateTime = forecastObj.dt_txt;
 
-                                forecastEl.append(`
-                                        <div class="weather-card column justify-center align-center">
-                                            <p class="future-date">${forecastObj.dt_txt}</p>
-                                            <div class="card-content row">
-                                                <div class="column">
-                                                    <i class="future-icon" href="${iconURL + forecastObj.weather[0].icon}.png"></i>
-                                                    <p class="future-temp">${Math.round(forecastObj.main.temp)}°C</p>
-                                                </div>
-                                                <div class="column">
-                                                    <p class="future-wind">Wind: ${forecastObj.wind.speed}</p>
-                                                    <p class="future-humidity">Humidity: ${forecastObj.main.humidity}</p>
+                                if (dateTime.includes("12:00:00")) {
+
+                                    forecastSection.show();
+
+                                    forecastEl.append(`
+                                            <div class="weather-card column justify-center align-center">
+                                                <p class="future-date">${forecastObj.dt_txt}</p>
+                                                <div class="card-content row">
+                                                    <div class="column">
+                                                        <i class="future-icon" href="${iconURL + forecastObj.weather[0].icon}.png"></i>
+                                                        <p class="future-temp">${Math.round(forecastObj.main.temp)}°C</p>
+                                                    </div>
+                                                    <div class="column">
+                                                        <p class="future-wind">Wind: ${forecastObj.wind.speed}</p>
+                                                        <p class="future-humidity">Humidity: ${forecastObj.main.humidity}</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                `)
-
-                                console.log(forecastData);
-                                console.log(forecastObj.dt_txt);
-                                console.log(`${iconURL + forecastObj.weather[0].icon}.png`);
-                                console.log(Math.round(forecastObj.main.temp));
-                                console.log(forecastObj.main.humidity);
-                                console.log(forecastObj.wind.speed);
+                                    `);
+                                }
                             }
                         });
 
