@@ -22,20 +22,43 @@ var currentURL = baseURL + `weather?appid=${apiKey}&units=metric&`;
 var forecastURL = baseURL + `forecast?appid=${apiKey}&units=metric&`;
 var iconURL = 'https://openweathermap.org/img/w/';
 
+// var loadData = localStorage.getItem("cityStorage")
+// if (loadData == null || loadData == "") return;
+
+// var cityButtonArr = JSON.parse(loadData)
+
+// for (i = 0; i < cityButtonArr.length; i++) {
+//     var create = $("<button>")
+//     create.attr("class", "btn btn-outline-secondary")
+//     create.attr("type", "button")
+//     create.text(cityButtonArr[i])
+//     buttonDiv.prepend(create)
+// }
+
+
 function getWeatherData(event) {
     event.preventDefault();
     var city = searchInput.val().trim().toLowerCase();
     var cityUpperCase = searchInput.val().trim();
+
+    var searchHistory = JSON.parse(localStorage.getItem("city")) || [];
+    searchHistory.push(cityUpperCase);
+    localStorage.setItem("city", JSON.stringify(searchHistory));
+    historyEl.html('');
+
+    for (let i = 0; i < searchHistory.length; i++) {
+            
+            var create = $("<button>");
+            create.attr("class", "search-history");
+            create.text(searchHistory[i]);
+            historyEl.append(create);
+        }
 
     if (city) {
         var matches = [];
         function inputSubmit(cityName) {
             $.get(currentURL + `q=${cityName}`)
                 .then(function (currentData) {
-
-                    historyEl.html(`
-                    <button class="search-history">${cityUpperCase}</button>
-                    `);
 
                     introPara.html('');
                     forecastEl.html('');
@@ -99,7 +122,7 @@ function getWeatherData(event) {
 }
 
 function init() {
-    searchBtn.click(getWeatherData)
+    searchBtn.click(getWeatherData);
 }
 
 init();
