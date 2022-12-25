@@ -28,53 +28,56 @@ var searchHistory = JSON.parse(localStorage.getItem("city")) || [];
 //Adds localStorage items to page on page load
 historyEl.html('');
 
-    //creates button with class search-history for each item in localStorage
-    for (let i = 0; i < searchHistory.length; i++) {       
-            var create = $("<button>");
-            create.attr("class", "search-history");
-            // create.attr("type", "button");
-            create.text(searchHistory[i]);
-            historyEl.append(create);
-        }
+//creates button with class search-history for each item in localStorage
+for (let i = 0; i < searchHistory.length; i++) {
+    var create = $("<button>");
+    create.attr("class", "search-history");
+    create.text(searchHistory[i]);
+    historyEl.append(create);
+}
 
 //Get HTML of search history button
 var historyBtn = $('.search-history');
 
-//Function runs when search button is clcked - this function is called in init function
+//Function runs when search button is clicked - this function is called in init function
 function getWeatherData(event) {
     event.preventDefault();
 
     //saves user's input to a variable
     var city = searchInput.val().trim().toLowerCase();
     var cityUpperCase = searchInput.val().trim();
-    
-    //pushes users input to localStorage array
-    searchHistory.push(cityUpperCase);
-    
-    //clears searchInput and historyEl HTML each time new search item entered
-    searchInput.val('');
-    historyEl.html('');
-
-    //creates button with class search-history for each item in localStorage
-    if (city){
-        for (let i = 0; i < searchHistory.length; i++) {       
-            var create = $("<button>");
-            create.attr("class", "search-history");
-            // create.attr("type", "button");
-            create.text(searchHistory[i]);
-            historyEl.append(create);
-        }
-    }
-    
 
     //Creates dynamically generated HTML for current and future forecast based on user input
     if (city) {
-        localStorage.setItem("city", JSON.stringify(searchHistory));
+
         var matches = [];
         function inputSubmit(cityName) {
-            //API Call for current forecast
+            //API call for current forecast
             $.get(currentURL + `q=${cityName}`)
                 .then(function (currentData) {
+
+                    //pushes users input to localStorage array and creates new search history button if item doesn't already exist in localStorage
+                    //if localStorage value contains search input text, add forecast data, else add button, setitem to localSotrage and display forecast data
+                    if (searchHistory.includes(city)) {
+                        searchHistory.push(cityUpperCase);
+                        console.log('it works');
+
+                        //clears searchInput and historyEl HTML each time new search item entered
+                        searchInput.val('');
+                        historyEl.html('');
+
+                        //Create search-history button if a match is found
+                        for (let i = 0; i < searchHistory.length; i++) {
+                            var create = $("<button>");
+                            create.attr("class", "search-history");
+                            create.text(searchHistory[i]);
+                            historyEl.append(create);  
+                        }
+
+                        localStorage.setItem("city", JSON.stringify(searchHistory));
+                        
+                    }
+
 
                     introPara.html('');
                     forecastEl.html('');
@@ -145,7 +148,7 @@ function getWeatherData(event) {
 
 //Function to add search history button text to input field on click
 function hist() {
-    $(document).ready(function(){
+    $(document).ready(function () {
         historyBtn.click(function (event) {
             event.preventDefault();
             var text = $(this).text();
