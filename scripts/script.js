@@ -36,6 +36,9 @@ historyEl.html('');
             historyEl.append(create);
         }
 
+//Get HTML of search history button
+var historyBtn = $('.search-history');
+
 //Function runs when search button is clcked - this function is called in init function
 function getWeatherData(event) {
     event.preventDefault();
@@ -47,7 +50,8 @@ function getWeatherData(event) {
     //pushes users input to localStorage array
     searchHistory.push(cityUpperCase);
     
-    //clears historyEl HTML to ensure same buttons aren't created multiple times
+    //clears searchInput and historyEl HTML each time new search item entered
+    searchInput.val('');
     historyEl.html('');
 
     //creates button with class search-history for each item in localStorage
@@ -131,9 +135,37 @@ function getWeatherData(event) {
 
 }
 
-//Starting function on search button clck
+//Function to add search history button text to input field on click
+function hist() {
+    $(document).ready(function(){
+        historyBtn.click(function (event) {
+        var text = $(this).text();
+        searchInput.val(text);
+        event.preventDefault();
+        getWeatherData(event);
+        });
+    });
+}
+
+hist();
+
+
+//Starting function on search button click
 function init() {
     searchBtn.click(getWeatherData);
 }
 
 init();
+
+
+// for (i = 0; i < searchHistory.length; i++){
+            
+        //     var cityHist = searchHistory[i];
+
+        //     console.log(historyBtn.text());
+            
+        //     if (cityHist === historyBtn.text()){
+        //         console.log("One matches");
+        //     } else {
+        //         console.log("One doesn't");
+        //     }
