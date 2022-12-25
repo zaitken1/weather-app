@@ -35,19 +35,28 @@ var iconURL = 'https://openweathermap.org/img/w/';
 //     buttonDiv.prepend(create)
 // }
 
+var searchHistory = JSON.parse(localStorage.getItem("city")) || [];
+
+historyEl.html('');
+
+    for (let i = 0; i < searchHistory.length; i++) {       
+            var create = $("<button>");
+            create.attr("class", "search-history");
+            create.text(searchHistory[i]);
+            historyEl.append(create);
+        }
 
 function getWeatherData(event) {
     event.preventDefault();
     var city = searchInput.val().trim().toLowerCase();
     var cityUpperCase = searchInput.val().trim();
 
-    var searchHistory = JSON.parse(localStorage.getItem("city")) || [];
+    
     searchHistory.push(cityUpperCase);
-    localStorage.setItem("city", JSON.stringify(searchHistory));
+    
     historyEl.html('');
 
-    for (let i = 0; i < searchHistory.length; i++) {
-            
+    for (let i = 0; i < searchHistory.length; i++) {       
             var create = $("<button>");
             create.attr("class", "search-history");
             create.text(searchHistory[i]);
@@ -55,6 +64,7 @@ function getWeatherData(event) {
         }
 
     if (city) {
+        localStorage.setItem("city", JSON.stringify(searchHistory));
         var matches = [];
         function inputSubmit(cityName) {
             $.get(currentURL + `q=${cityName}`)
