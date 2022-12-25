@@ -114,6 +114,16 @@ input {
     font-size: 1.5rem;
 }
 
+.searchBtn:hover {
+    cursor: pointer;
+    background: linear-gradient(to left top,#EC7D10, #E6317C);
+}
+
+.history {
+    width: 600px;
+    flex-wrap: wrap;
+}
+
 .search-history {
     border-radius: 20px;
     height: 40px;
@@ -122,11 +132,6 @@ input {
     width: 180px;
     font-size: 1.5rem;
     margin: 30px 10px 0 10px;
-}
-
-.searchBtn:hover {
-    cursor: pointer;
-    background: linear-gradient(to left top,#EC7D10, #E6317C);
 }
 
 .search-history:hover {
@@ -240,6 +245,12 @@ footer {
     .forecast {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 200px 200px 200px;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .history {
+        width: 400px;
     }
 }
 
