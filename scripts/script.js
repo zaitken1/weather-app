@@ -22,23 +22,13 @@ var currentURL = baseURL + `weather?appid=${apiKey}&units=metric&`;
 var forecastURL = baseURL + `forecast?appid=${apiKey}&units=metric&`;
 var iconURL = 'https://openweathermap.org/img/w/';
 
-// var loadData = localStorage.getItem("cityStorage")
-// if (loadData == null || loadData == "") return;
-
-// var cityButtonArr = JSON.parse(loadData)
-
-// for (i = 0; i < cityButtonArr.length; i++) {
-//     var create = $("<button>")
-//     create.attr("class", "btn btn-outline-secondary")
-//     create.attr("type", "button")
-//     create.text(cityButtonArr[i])
-//     buttonDiv.prepend(create)
-// }
-
+//Checks localStorage for items
 var searchHistory = JSON.parse(localStorage.getItem("city")) || [];
 
+//Adds localStorage items to page on page load
 historyEl.html('');
 
+    //creates button with class search-history for each item in localStorage
     for (let i = 0; i < searchHistory.length; i++) {       
             var create = $("<button>");
             create.attr("class", "search-history");
@@ -46,16 +36,21 @@ historyEl.html('');
             historyEl.append(create);
         }
 
+//Function runs when search button is clcked - this function is called in init function
 function getWeatherData(event) {
     event.preventDefault();
+
+    //saves user's input to a variable
     var city = searchInput.val().trim().toLowerCase();
     var cityUpperCase = searchInput.val().trim();
-
     
+    //pushes users input to localStorage array
     searchHistory.push(cityUpperCase);
     
+    //clears historyEl HTML to ensure same buttons aren't created multiple times
     historyEl.html('');
 
+    //creates button with class search-history for each item in localStorage
     for (let i = 0; i < searchHistory.length; i++) {       
             var create = $("<button>");
             create.attr("class", "search-history");
@@ -63,16 +58,19 @@ function getWeatherData(event) {
             historyEl.append(create);
         }
 
+    //Creates dynamically generated HTML for current and future forecast based on user input
     if (city) {
         localStorage.setItem("city", JSON.stringify(searchHistory));
         var matches = [];
         function inputSubmit(cityName) {
+            //API Call for current forecast
             $.get(currentURL + `q=${cityName}`)
                 .then(function (currentData) {
 
                     introPara.html('');
                     forecastEl.html('');
 
+                    //Dynamically generated HTML for current forecast based on user input and returned API data
                     introPara.html(`
                         <section class="row">
                             <div class="current-weather align-center">
@@ -92,6 +90,7 @@ function getWeatherData(event) {
                         </section >
                     `);
 
+                    //API call for future 5-day forecast
                     $.get(forecastURL + `lat=${currentData.coord.lat}&lon=${currentData.coord.lon}`)
                         .then(function (forecastData) {
 
@@ -99,6 +98,7 @@ function getWeatherData(event) {
 
                                 var dateTime = forecastObj.dt_txt;
 
+                                //Dynamically generated HTML for future forecast based on user input and returned API data, and if time = 12:00
                                 if (dateTime.includes("12:00:00")) {
 
                                     forecastSection.show();
@@ -131,6 +131,7 @@ function getWeatherData(event) {
 
 }
 
+//Starting function on search button clck
 function init() {
     searchBtn.click(getWeatherData);
 }
