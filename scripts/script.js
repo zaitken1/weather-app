@@ -32,6 +32,7 @@ historyEl.html('');
     for (let i = 0; i < searchHistory.length; i++) {       
             var create = $("<button>");
             create.attr("class", "search-history");
+            // create.attr("type", "button");
             create.text(searchHistory[i]);
             historyEl.append(create);
         }
@@ -55,12 +56,16 @@ function getWeatherData(event) {
     historyEl.html('');
 
     //creates button with class search-history for each item in localStorage
-    for (let i = 0; i < searchHistory.length; i++) {       
+    if (city){
+        for (let i = 0; i < searchHistory.length; i++) {       
             var create = $("<button>");
             create.attr("class", "search-history");
+            // create.attr("type", "button");
             create.text(searchHistory[i]);
             historyEl.append(create);
         }
+    }
+    
 
     //Creates dynamically generated HTML for current and future forecast based on user input
     if (city) {
@@ -126,9 +131,12 @@ function getWeatherData(event) {
                             }
                         });
                 });
-
-
         }
+    } else if (city == "" || city == null) {
+        introPara.html('');
+        introPara.html(`
+        <p class="para row justify-center">No search results found. Please enter a city to see a 5-day forecast.</p>
+        `);
     }
 
     inputSubmit(city);
@@ -139,16 +147,15 @@ function getWeatherData(event) {
 function hist() {
     $(document).ready(function(){
         historyBtn.click(function (event) {
-        var text = $(this).text();
-        searchInput.val(text);
-        event.preventDefault();
-        getWeatherData(event);
+            event.preventDefault();
+            var text = $(this).text();
+            searchInput.val(text);
+            getWeatherData(event);
         });
     });
 }
 
 hist();
-
 
 //Starting function on search button click
 function init() {
@@ -156,16 +163,3 @@ function init() {
 }
 
 init();
-
-
-// for (i = 0; i < searchHistory.length; i++){
-            
-        //     var cityHist = searchHistory[i];
-
-        //     console.log(historyBtn.text());
-            
-        //     if (cityHist === historyBtn.text()){
-        //         console.log("One matches");
-        //     } else {
-        //         console.log("One doesn't");
-        //     }
