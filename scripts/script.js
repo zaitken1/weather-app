@@ -56,28 +56,26 @@ function getWeatherData(event) {
             $.get(currentURL + `q=${cityName}`)
                 .then(function (currentData) {
 
+                    //if localStorage value doesn't already contain search input text, add button, setitem to localSotrage and display forecast data, else just show forecast
                     //pushes users input to localStorage array and creates new search history button if item doesn't already exist in localStorage
-                    //if localStorage value contains search input text, add forecast data, else add button, setitem to localSotrage and display forecast data
-                    if (searchHistory.includes(city)) {
+                    searchHistory = JSON.parse(localStorage.getItem("city"));
+                    if (searchHistory.indexOf(cityUpperCase) == -1) {
                         searchHistory.push(cityUpperCase);
-                        console.log('it works');
-
-                        //clears searchInput and historyEl HTML each time new search item entered
-                        searchInput.val('');
-                        historyEl.html('');
-
-                        //Create search-history button if a match is found
-                        for (let i = 0; i < searchHistory.length; i++) {
-                            var create = $("<button>");
-                            create.attr("class", "search-history");
-                            create.text(searchHistory[i]);
-                            historyEl.append(create);  
-                        }
-
-                        localStorage.setItem("city", JSON.stringify(searchHistory));
-                        
                     }
 
+                    //clears searchInput and historyEl HTML each time new search item entered
+                    searchInput.val('');
+                    historyEl.html('');
+
+                    //Create search-history button if a match is found
+                    for (let i = 0; i < searchHistory.length; i++) {
+                        var create = $("<button>");
+                        create.attr("class", "search-history");
+                        create.text(searchHistory[i]);
+                        historyEl.append(create);
+                    }
+
+                    localStorage.setItem("city", JSON.stringify(searchHistory));
 
                     introPara.html('');
                     forecastEl.html('');
