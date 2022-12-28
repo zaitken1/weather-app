@@ -99,7 +99,7 @@ function getWeatherData(event) {
                                         <p class="current-temp">${Math.round(currentData.main.temp)}°C</p>
                                     </div>
                                     <p class="current-humidity">Humidity: ${currentData.main.humidity}%</p>
-                                    <p class="current-wind">Wind: ${currentData.wind.speed}mph</p>
+                                    <p class="current-wind">Wind: ${Math.round(currentData.wind.speed)}mph</p>
                                 </div>
                             </div>
                         </section >
@@ -127,8 +127,8 @@ function getWeatherData(event) {
                                                         <p class="future-temp">${Math.round(forecastObj.main.temp)}°C</p>
                                                     </div>
                                                     <div class="column">
-                                                        <p class="future-wind">Wind: ${forecastObj.wind.speed}</p>
-                                                        <p class="future-humidity">Humidity: ${forecastObj.main.humidity}</p>
+                                                        <p class="future-wind">Wind: ${Math.round(forecastObj.wind.speed)}mph</p>
+                                                        <p class="future-humidity">Humidity: ${forecastObj.main.humidity}%</p>
                                                     </div>
                                                 </div>
                                             </div>
