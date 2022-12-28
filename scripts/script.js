@@ -29,28 +29,35 @@ var searchHistory = JSON.parse(localStorage.getItem("city")) || [];
 historyEl.html('');
 
 //creates button with class search-history for each item in localStorage
-for (let i = 0; i < searchHistory.length; i++) {
-    var create = $("<button>");
-    create.attr("class", "search-history");
-    create.text(searchHistory[i]);
-    historyEl.append(create);
+function createButtons() {
+    for (let i = 0; i < searchHistory.length; i++) {
+        var create = $("<button>");
+        create.attr("class", "search-history");
+        create.text(searchHistory[i]);
+        historyEl.append(create);
+    }
 }
+
+createButtons();
+
 
 //Get HTML of search history button
 var historyBtn = $('.search-history');
+var city;
+var cityUpperCase;
 
 //Function runs when search button is clicked - this function is called in init function
 function getWeatherData(event) {
     event.preventDefault();
 
     //saves user's input to a variable
-    var city = searchInput.val().trim().toLowerCase();
-    var cityUpperCase = searchInput.val().trim();
+    city = searchInput.val().trim().toLowerCase();
+    cityUpperCase = searchInput.val().trim();
 
     //Creates dynamically generated HTML for current and future forecast based on user input
     if (city) {
+        console.log("Not a clue what's going on");
 
-        var matches = [];
         function inputSubmit(cityName) {
             //API call for current forecast
             $.get(currentURL + `q=${cityName}`)
@@ -58,30 +65,29 @@ function getWeatherData(event) {
 
                     console.log(searchHistory);
 
-                    
                     //if localStorage value doesn't already contain search input text, add button, setitem to localSotrage and display forecast data, else just show 
                     //pushes users input to localStorage array and creates new search history button if item doesn't already exist in localStorage
                     if (searchHistory.indexOf(cityUpperCase) == -1) {
                         searchHistory.push(cityUpperCase);
                         console.log("that doesn't exist");
-                    } else {
-                        console.log("That already exist");
                     }
 
-                        //clears searchInput and historyEl HTML each time new search item entered
-                        searchInput.val('');
-                        historyEl.html('');
+                    //clears searchInput and historyEl HTML each time new search item entered
+                    searchInput.val('');
+                    historyEl.html('');
 
-                        //Create search-history button if a match is found
-                        for (let i = 0; i < searchHistory.length; i++) {
-                            var create = $("<button>");
-                            create.attr("class", "search-history");
-                            create.text(searchHistory[i]);
-                            historyEl.append(create);  
-                        }
+                    //Create search-history button if a match is found
+                    // for (let i = 0; i < searchHistory.length; i++) {
+                    //     var create = $("<button>");
+                    //     create.attr("type", "button");
+                    //     create.attr("class", "search-history");
+                    //     create.text(searchHistory[i]);
+                    //     historyEl.append(create);
+                    // }
 
-                        localStorage.setItem("city", JSON.stringify(searchHistory));
+                    createButtons();
 
+                    localStorage.setItem("city", JSON.stringify(searchHistory));
 
                     introPara.html('');
                     forecastEl.html('');
@@ -140,6 +146,7 @@ function getWeatherData(event) {
                 });
         }
     } else if (city == "" || city == null) {
+        console.log("String was emtpy");
         introPara.html('');
         introPara.html(`
         <p class="para row justify-center">No search results found. Please enter a city to see a 5-day forecast.</p>
@@ -165,8 +172,8 @@ function hist() {
 hist();
 
 //Starting function on search button click
-function init() {
+(function init() {
     searchBtn.click(getWeatherData);
-}
+})();
 
-init();
+init(); 
