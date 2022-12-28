@@ -218,6 +218,10 @@ main {
     font-size: 25px;
 }
 
+.future-icon {
+    margin-right: 10px;
+}
+
 .future-wind {
     margin-bottom: 7px;
 }

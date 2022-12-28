@@ -32,6 +32,7 @@ historyEl.html('');
 function createButtons() {
     for (let i = 0; i < searchHistory.length; i++) {
         var create = $("<button>");
+        create.attr("type", "submit");
         create.attr("class", "search-history");
         create.text(searchHistory[i]);
         historyEl.append(create);
@@ -48,6 +49,7 @@ var cityUpperCase;
 
 //Function runs when search button is clicked - this function is called in init function
 function getWeatherData(event) {
+
     event.preventDefault();
 
     //saves user's input to a variable
@@ -76,15 +78,6 @@ function getWeatherData(event) {
                     searchInput.val('');
                     historyEl.html('');
 
-                    //Create search-history button if a match is found
-                    // for (let i = 0; i < searchHistory.length; i++) {
-                    //     var create = $("<button>");
-                    //     create.attr("type", "button");
-                    //     create.attr("class", "search-history");
-                    //     create.text(searchHistory[i]);
-                    //     historyEl.append(create);
-                    // }
-
                     createButtons();
 
                     localStorage.setItem("city", JSON.stringify(searchHistory));
@@ -102,7 +95,7 @@ function getWeatherData(event) {
                                 </div>
                                 <div>
                                     <div class="row">
-                                        <i class="current-weather-icon" href="${iconURL + currentData.weather[0].icon}.png"></i>
+                                        <img class="current-weather-icon" src="${iconURL + currentData.weather[0].icon}.png">
                                         <p class="current-temp">${Math.round(currentData.main.temp)}°C</p>
                                     </div>
                                     <p class="current-humidity">Humidity: ${currentData.main.humidity}%</p>
@@ -129,8 +122,8 @@ function getWeatherData(event) {
                                             <div class="weather-card column justify-center align-center">
                                                 <p class="future-date">${forecastObj.dt_txt}</p>
                                                 <div class="card-content row">
-                                                    <div class="column">
-                                                        <i class="future-icon" href="${iconURL + forecastObj.weather[0].icon}.png"></i>
+                                                    <div class="row">
+                                                        <img class="future-icon" src="${iconURL + forecastObj.weather[0].icon}.png">
                                                         <p class="future-temp">${Math.round(forecastObj.main.temp)}°C</p>
                                                     </div>
                                                     <div class="column">
@@ -161,6 +154,7 @@ function getWeatherData(event) {
 function hist() {
     $(document).ready(function () {
         historyBtn.click(function (event) {
+            console.log("clicked history btn");
             event.preventDefault();
             var text = $(this).text();
             searchInput.val(text);
@@ -172,8 +166,8 @@ function hist() {
 hist();
 
 //Starting function on search button click
-(function init() {
+function init() {
     searchBtn.click(getWeatherData);
-})();
+};
 
 init(); 
