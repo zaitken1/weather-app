@@ -138,6 +138,7 @@ input {
     cursor: pointer;
 }
 
+/* Current and 5-day weather forecast */
 main {
     background: var(--dark-blue);
     min-height: 100vh;
@@ -149,6 +150,7 @@ main {
     padding-top: 50px;
 }
 
+/* Current weather forecast */
 .current-weather {
     background-color: var(--dark-blue);
     color: var(--white);
@@ -182,6 +184,7 @@ main {
     padding: 10px 0;
 }
 
+/* 5-day forecast section */
 .forecast-section {
     display: none;
 }
@@ -243,6 +246,7 @@ footer {
     padding-bottom: 20px;
 }
 
+/* Media Queries / Responsiveness Changes */
 @media screen and (max-width: 755px) {
     .forecast {
         grid-template-columns: 1fr 1fr;

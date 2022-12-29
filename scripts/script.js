@@ -1,3 +1,5 @@
+//Starting function 'init' is at the bottom of the codeblock
+
 //Add current date to current weather element
 //Get p element for current day
 var currentDateEl = $('.current-date');
@@ -162,6 +164,7 @@ function getWeatherData(event) {
                         });
                 });
         }
+    // If search input is null or empty string, display 'no search results found' message
     } else if (city == "" || city == null) {
         console.log("String was emtpy");
         introPara.html('');
