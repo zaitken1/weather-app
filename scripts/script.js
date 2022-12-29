@@ -168,6 +168,7 @@ function getWeatherData(event) {
         introPara.html(`
         <p class="para row justify-center">No search results found. Please enter a city to see a 5-day forecast.</p>
         `);
+        forecastSection.html('');
     }
 
     inputSubmit(city);
