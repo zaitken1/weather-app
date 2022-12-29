@@ -266,3 +266,13 @@ footer {
         grid-template-rows: 200px 200px 200px 200px 200px;
     }
 }
+
+@media screen and (max-width: 380px) {
+    .history {
+        width: 350px;
+    }
+
+    .search-history, .search-history-two {
+        width: 150px;
+    }
+}
