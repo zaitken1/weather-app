@@ -124,7 +124,7 @@ input {
     flex-wrap: wrap;
 }
 
-.search-history {
+.search-history, .search-history-two {
     border-radius: 20px;
     height: 40px;
     border: none;
@@ -134,7 +134,7 @@ input {
     margin: 30px 10px 0 10px;
 }
 
-.search-history:hover {
+.search-history:hover, .search-history-two:hover {
     background-color: var(--dark-blue);
     color: var(--white);
     cursor: pointer;

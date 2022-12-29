@@ -78,7 +78,31 @@ function getWeatherData(event) {
                     searchInput.val('');
                     historyEl.html('');
 
-                    createButtons();
+                    for (let i = 0; i < searchHistory.length; i++) {
+                        var create = $("<button>");
+                        create.attr("type", "submit");
+                        create.attr("class", "search-history-two");
+                        create.text(searchHistory[i]);
+                        historyEl.append(create);
+                    }
+
+                    var searchHistoryTwo = $(".search-history-two");
+
+                    searchHistoryTwo.click(function (event) {
+                        console.log("clicked history btn");
+                        event.preventDefault();
+                        var text = $(this).text();
+                        searchInput.val(text);
+                        getWeatherData(event);
+                    });
+
+                    historyBtn.click(function (event) {
+                        console.log("clicked history btn");
+                        event.preventDefault();
+                        var text = $(this).text();
+                        searchInput.val(text);
+                        getWeatherData(event);
+                    });
 
                     localStorage.setItem("city", JSON.stringify(searchHistory));
 
